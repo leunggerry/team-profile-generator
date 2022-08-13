@@ -12,6 +12,8 @@ This project will generate information about your based on the answers provided.
 <img width="1135" alt="Screen Shot 2022-08-13 at 6 08 42 PM" src="https://user-images.githubusercontent.com/5793994/184514403-eccbb869-fed9-4bfd-8262-b9d7d95dcfc1.png">
 
 ## Video Link
+https://user-images.githubusercontent.com/5793994/184515311-0e190524-cba4-4103-b4c7-21445bb74fdc.mov
+
 
 ## Questions
 If you have any questions regarding the status of this project or any concerns please refer to my GitHub repo:
