@@ -33,14 +33,16 @@ function init() {
     .then((managerAnswers) => {
       //save the manager as object
       saveManager(managerAnswers);
-
+      return managerAnswers;
+    })
+    .then((managerAnswers) => {
       //check to add another employee
       if (managerAnswers.confirmAddEmployee) {
         return promptTeamMember();
       }
-      return true;
     })
     .then((passed) => {
+      console.log(teamDataArr);
       return generatePage(teamDataArr);
     })
     .then((pageHtml) => {
@@ -49,7 +51,7 @@ function init() {
 }
 
 function promptTeamMember() {
-  inquirer.prompt(TEAM_QUESTION).then((employeeTypeAnswers) => {
+  return inquirer.prompt(TEAM_QUESTION).then((employeeTypeAnswers) => {
     if (employeeTypeAnswers.employeeType === "Engineer") {
       promptEngineer().then((engineerAnswers) => {
         //save the engineer as aobjet

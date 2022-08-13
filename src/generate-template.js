@@ -6,6 +6,7 @@ const Intern = require("../lib/Intern");
 /** Function Definitions
  *************************************************************************************************/
 const generatePageTemplate = (teamArr) => {
+  console.log(teamArr);
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -23,7 +24,7 @@ const generatePageTemplate = (teamArr) => {
       <main>
         <div class="team-container continainer">
           ${teamArr
-            .foreach((employee) => {
+            .map((employee) => {
               console.log(employee.getName());
 
               return `

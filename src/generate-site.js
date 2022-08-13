@@ -8,7 +8,7 @@ const writeFile = (fileContent) => {
   // resolve - if the promise is fullfilled
   // reject - if promise is not fullfilled
   return new Promise((resolve, reject) => {
-    fs.writeFile("../dist/index.html", fileContent, (err) => {
+    fs.writeFile("./dist/index.html", fileContent, (err) => {
       //if there is an error, reject the Promise and send the error to the promise's `.catch()` method
       if (err) {
         reject(err);
