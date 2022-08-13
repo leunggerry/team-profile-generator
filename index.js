@@ -6,7 +6,7 @@ const generatePage = require("./src/generate-template");
 const [Manager, MANGER_QUESTIONS] = require("./lib/Manager");
 const [Engineer, ENGINEER_QUESTIONS] = require("./lib/Engineer");
 const [Intern, INTERN_QUESTIONS] = require("./lib/Intern");
-const { writeFile } = require("../../portfolio-generator/utils/generate-site");
+const { writeFile } = require("./src/generate-site");
 
 /** Global Constants
  **************************************************************************************************/
@@ -41,7 +41,6 @@ function init() {
       return true;
     })
     .then((passed) => {
-        
       return generatePage(teamDataArr);
     })
     .then((pageHtml) => {
