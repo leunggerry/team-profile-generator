@@ -35,7 +35,7 @@ const generatePageTemplate = (teamArr) => {
     </head>
 
     <body>
-      <header class="container-md p-3 text-center bg-primary text-white myteam">
+      <header class="container p-3 text-center bg-primary text-white myteam">
         <h1>My Team</h1>
       </header>
   
