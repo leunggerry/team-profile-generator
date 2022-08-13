@@ -25,7 +25,7 @@ const generatePageTemplate = (teamArr) => {
         <div class="team-container continainer">
           ${teamArr
             .map((employee) => {
-              console.log(employee.getName());
+              //console.log(employee.getName());
 
               return `
                   <div class="employee">

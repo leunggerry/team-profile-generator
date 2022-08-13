@@ -14,8 +14,8 @@ const TEAM_QUESTION = [
   {
     type: "list",
     name: "employeeType",
-    message: "What type of employee would you like to add?",
-    choices: ["Engineer", "Intern"],
+    message: "What would you like to do?",
+    choices: ["Add an Engineer", "Add an Intern", "Finish team building"],
   },
 ];
 /** Global Variables
@@ -37,9 +37,10 @@ function init() {
     })
     .then((managerAnswers) => {
       //check to add another employee
-      if (managerAnswers.confirmAddEmployee) {
-        return promptTeamMember();
-      }
+      //   if (managerAnswers.confirmAddEmployee) {
+      //     return promptTeamMember();
+      //   }
+      return promptTeamMember();
     })
     .then((passed) => {
       console.log(teamDataArr);
@@ -52,29 +53,50 @@ function init() {
 
 function promptTeamMember() {
   return inquirer.prompt(TEAM_QUESTION).then((employeeTypeAnswers) => {
-    if (employeeTypeAnswers.employeeType === "Engineer") {
-      promptEngineer().then((engineerAnswers) => {
-        //save the engineer as aobjet
-        saveEngineer(engineerAnswers);
-
-        // check if another employee wants to be added
-        if (engineerAnswers.confirmAddEmployee) {
+    switch (employeeTypeAnswers.employeeType) {
+      case "Add an Engineer":
+        return promptEngineer().then((engineerAnswers) => {
+          //save the engineer as aobjet
+          saveEngineer(engineerAnswers);
+          // check if another employee wants to be added
           return promptTeamMember();
-        }
-      });
-    }
-    // intern defaulted
-    else {
-      promptIntern().then((internAnswers) => {
-        //save the intern as object
-        saveIntern(internAnswers);
+        });
+      case "Add an Intern":
+        return promptIntern().then((internAnswers) => {
+          //save the intern as object
+          saveIntern(internAnswers);
 
-        // check if another employee wants to be added
-        if (internAnswers.confirmAddEmployee) {
+          // check if another employee wants to be added
           return promptTeamMember();
-        }
-      });
+        });
+      default:
+        console.log("Done adding member");
+        return;
     }
+    // if (employeeTypeAnswers.employeeType === "Engineer") {
+    //   return promptEngineer().then((engineerAnswers) => {
+    //     //save the engineer as aobjet
+    //     saveEngineer(engineerAnswers);
+
+    //     // check if another employee wants to be added
+    //     return promptTeamMember();
+    //   });
+    // }
+    // // intern defaulted
+    // else if (employeeTypeAnswers.employeeType === "Intern") {
+    //   return promptIntern().then((internAnswers) => {
+    //     //save the intern as object
+    //     saveIntern(internAnswers);
+
+    //     // check if another employee wants to be added
+    //     return promptTeamMember();
+    //   });
+    // }
+    // // build the html
+    // else {
+    //   console.log("Done adding member");
+    //   return;
+    // }
   });
 }
 //////// Manager Inputs ///////////
